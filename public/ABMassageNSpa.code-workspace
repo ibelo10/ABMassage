@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "../../BotApp/ABMassageNSpa"
+	},
+	{
+		"path": "."
+	},
+	{
+		"path": "../netlify"
+	}
+],
+  "settings": {}
+}
