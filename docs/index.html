@@ -1,36 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AB Massage & Spa - Professional massage therapy and spa services" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Deep Linking -->
+    <meta property="al:ios:url" content="abmassagespa://booking" />
+    <meta property="al:ios:app_store_id" content="123456789" />
+    <meta property="al:ios:app_name" content="AB Massage & Spa" />
+    <meta property="al:android:url" content="abmassagespa://booking" />
+    <meta property="al:android:package" content="com.abmassagespa" />
+    <meta property="al:android:app_name" content="AB Massage & Spa" />
+
     <title>AB Massage & Spa</title>
     <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="assets/images/icons/icon-192x192.png" />
+    
+    <!-- Payment Integration -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="services.html">Services</a></li>
-        </ul>
-      </nav>
+        <nav class="main-nav">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="AB Massage & Spa Logo" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li class="mobile-show"><a href="my-bookings.html">My Bookings</a></li>
+            </ul>
+            <div class="auth-section">
+                <button id="biometricLogin" class="auth-button">
+                    <span class="icon">👆</span> Quick Login
+                </button>
+                <a href="login.html" class="auth-button">Login</a>
+                <a href="register.html" class="auth-button highlight">Register</a>
+            </div>
+        </nav>
     </header>
+
     <main>
-      <section id="hero">
-        <h1>Welcome to AB Massage & Spa</h1>
-        <p>Your relaxation is our priority.</p>
-      </section>
-      <section id="highlights">
-        <h2>Our Services</h2>
-        <p>Experience the best massage therapy tailored to your needs.</p>
-        <a href="services.html" class="button">View Services</a>
-      </section>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Welcome to AB Massage & Spa</h1>
+                <p>Your relaxation is our priority.</p>
+                <div class="hero-cta">
+                    <a href="booking.html" class="button primary">Book Now</a>
+                    <button id="installApp" class="button secondary" style="display: none;">
+                        Install App
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="quick-book" class="quick-book-section">
+            <h2>Quick Booking</h2>
+            <div class="booking-widget">
+                <form id="quickBookForm">
+                    <select name="service" required>
+                        <option value="">Select Service</option>
+                        <option value="swedish">Swedish Massage</option>
+                        <option value="deep">Deep Tissue Massage</option>
+                        <option value="hot">Hot Stone Therapy</option>
+                    </select>
+                    <input type="date" name="date" required />
+                    <input type="time" name="time" required />
+                    <button type="submit" class="button primary">Book Now</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="highlights" class="services-highlight">
+            <h2>Our Services</h2>
+            <p>Experience the best massage therapy tailored to your needs.</p>
+            <div class="service-cards">
+                <div class="service-card">
+                    <img src="assets/images/swedish.jpg" alt="Swedish Massage" />
+                    <h3>Swedish Massage</h3>
+                    <p>Relaxing massage perfect for stress relief</p>
+                    <a href="services.html#swedish" class="button">Learn More</a>
+                </div>
+                <!-- Add more service cards -->
+            </div>
+            <a href="services.html" class="button view-all">View All Services</a>
+        </section>
+
+        <section id="loyalty" class="loyalty-section">
+            <h2>Loyalty Program</h2>
+            <div class="loyalty-info">
+                <div class="points-display">
+                    <span id="loyaltyPoints">0</span> points
+                </div>
+                <div class="membership-status">
+                    Status: <span id="membershipTier">Bronze</span>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-      <p>&copy; 2024 AB Massage & Spa. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>123 Spa Street</p>
+                <p>Email: contact@abmassagespa.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="gift-cards.html">Gift Cards</a></li>
+                    <li><a href="loyalty.html">Loyalty Program</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AB Massage & Spa. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- Core Scripts -->
     <script src="js/main.js"></script>
-  </body>
+    <script src="js/auth.js"></script>
+    <script src="js/booking-manager.js"></script>
+    <script src="js/loyalty-manager.js"></script>
+
+    <!-- Mobile Integration -->
+    <script src="mobile/services/biometric-auth.js"></script>
+    <script src="mobile/services/deep-linking.js"></script>
+    <script src="mobile/services/offline-sync.js"></script>
+    <script src="mobile/services/push-notifications.js"></script>
+    <script src="mobile/services/payment-integration.js"></script>
+
+    <script>
+        // Initialize services
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize biometric authentication
+            const bioAuth = new BiometricAuthService();
+            const bioAvailable = await bioAuth.checkBiometricAvailability();
+            if (!bioAvailable.isAvailable) {
+                document.getElementById('biometricLogin').style.display = 'none';
+            }
+
+            // Initialize deep linking
+            const deepLinkManager = new DeepLinkManager();
+
+            // Initialize offline sync
+            const syncManager = new OfflineSyncManager();
+            await syncManager.initializeDB();
+
+            // Initialize payment service
+            const paymentService = new PaymentService();
+            await paymentService.initialize();
+
+            // Check if app can be installed
+            if ('serviceWorker' in navigator && window.matchMedia('(display-mode: browser)').matches) {
+                const installButton = document.getElementById('installApp');
+                installButton.style.display = 'block';
+                installButton.addEventListener('click', async () => {
+                    // Show install prompt
+                    // ... installation logic
+                });
+            }
+
+            // Initialize push notifications
+            const notificationManager = new NotificationTemplateManager();
+            // Request notification permissions if needed
+            if ('Notification' in window) {
+                const permission = await Notification.requestPermission();
+                if (permission === 'granted') {
+                    // Subscribe to push notifications
+                    // ... subscription logic
+                }
+            }
+        });
+    </script>
+</body>
 </html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - AB Massage & Spa</title>
+    <style>
+        .confirmation-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .success-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #28a745;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .booking-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .detail-value {
+            color: #212529;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .primary-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .secondary-button {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .reminder-text {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .nav-buttons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .user-status {
+            text-align: right;
+            padding: 1rem;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="userStatus" class="user-status">
+            Welcome, <span id="userName"></span>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="confirmation-container">
+            <div class="success-header">
+                <div class="success-icon">✓</div>
+                <h1>Booking Confirmed!</h1>
+                <p>Thank you for choosing AB Massage & Spa</p>
+            </div>
+
+            <div class="booking-details" id="bookingDetails">
+                <!-- Booking details will be populated by JavaScript -->
+            </div>
+
+            <div class="reminder-text">
+                <p>A confirmation email has been sent to your registered email address.</p>
+                <p>Please arrive 10 minutes before your appointment time.</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="my-bookings.html" class="button primary-button">View My Bookings</a>
+                <a href="index.html" class="button secondary-button">Return Home</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 AB Massage & Spa. All rights reserved.</p>
+    </footer>
+    <script src="js/auth.js"></script>
+    <script src="js/booking-confirmation.js"></script>
+</body>
+</html>
